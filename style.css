@@ -1,0 +1,117 @@
+body{
+    font-family: "Calistoga", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.sidenav{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: aliceblue;
+    overflow: hidden;
+    padding-top: 5rem;
+    transition: 0.5s;
+}
+
+.side-menus{
+    display: flex;
+    flex-direction: column;
+}
+
+.sidenav button{
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: block;
+    transition: 0.3s;
+  }
+
+.sidenav button:hover{
+    background-color: #38BDFF;
+}
+
+.sidenav .closebtn{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 30px;
+    right: 0px;
+    font-size: 2rem;
+}
+
+.hidden-btn{
+    margin-top: 0.75rem;
+    margin-left: 0.75rem;
+    display: none;
+}
+
+.sidenav .closebtn:hover{
+    background-color: transparent;
+    color:#38BDFF;
+}
+
+.head-line{
+    margin-top: 1rem;
+    font-size: 5.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.menus{
+    margin-bottom: 1rem;
+    border-top: 2px solid black;
+    border-bottom: 8px double black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menus button{
+    margin: 0.5rem 0.5rem;
+    background-color: transparent;
+    border: none;
+}
+
+.menus button:hover{
+    background-color: #38BDFF;
+}
+
+#input-area{
+    display: none;
+}
+
+.main-imgsize{
+    max-width: 100%;
+    max-height: 16rem;
+}
+
+.news-view{
+    border-bottom: 3px solid black;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    font-weight: 700;
+}
+
+
+@media screen and (max-width: 60rem) {
+    .head-line{
+        border-bottom: 3px solid black;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+    }
+    .hidden-btn{
+        display: block;
+    }
+    .menus{
+        display: none;
+    }
+    .news-view{
+        text-align: center;
+    }
+  }
