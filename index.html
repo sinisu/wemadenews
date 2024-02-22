@@ -14,27 +14,23 @@
     <div class="sidenav" id="mySidenav">  
         <div class="side-menus">
             <button class="closebtn" onclick="closeNav();"><i class="fa-solid fa-minus"></i></button>
-            <button>WORLD</button>
             <button>BUSINESS</button>
-            <button>TECH</button>
-            <button>ARTS</button>
-            <button>LIFESTYLE</button>
             <button>ENTERTAINMENT</button>
-            <button>BEAUTY</button>
-            <button>MUSIC</button>
-            <button>GAMES</button>
-            <button>COOKING</button>
+            <button>GENERAL</button>
+            <button>HEALTH</button>
+            <button>SCIENCE</button>
             <button>SPORTS</button>
+            <button>TECHNOLOGY</button>       
         </div>
     </div>
-    <div class="d-flex">
+    <div class="top-area">
         <div class="hidden-btn"><span onclick="openNav()"><i class="fa-solid fa-bars"></i></span></div>
-        <div class="m-2">
-        <i class="fa-solid fa-magnifying-glass p-2" onclick="openSearchBox()"></i>
-            <span id="input-area">
-                <input type="text" id="search-input" placeholder="search hier">
+        <div class="m-2 top-center">
+            <i class="fa-solid fa-magnifying-glass p-2 medi-hidden" onclick="openSearchBox()"></i>
+            <div id="input-area">
+                <input type="text" id="search-input" placeholder="search">
                 <button class="search-btn" onclick="searchNews()">go</button>
-            </span>
+            </div>
         </div>
     </div>
     
@@ -42,18 +38,15 @@
     <section class="container">
         <section>
             <div class="head-line">NEW NEW TIMES</div>
+            <div id="calendar-area" class="calendar-style">시간</div>
             <div class="menus">               
-                <button>WORLD</button>
                 <button>BUSINESS</button>
-                <button>TECH</button>
-                <button>ARTS</button>
-                <button>LIFESTYLE</button>
                 <button>ENTERTAINMENT</button>
-                <button>BEAUTY</button>
-                <button>MUSIC</button>
-                <button>GAMES</button>
-                <button>COOKING</button>
+                <button>GENERAL</button>
+                <button>HEALTH</button>
+                <button>SCIENCE</button>
                 <button>SPORTS</button>
+                <button>TECHNOLOGY</button>
             </div>
         </section>
         <section id="news-article">

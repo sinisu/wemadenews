@@ -4,6 +4,12 @@ body{
     font-style: normal;
 }
 
+p{
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 .sidenav{
     height: 100%;
     width: 0;
@@ -56,6 +62,11 @@ body{
     color:#38BDFF;
 }
 
+.top-area{
+    padding-right: 1.625rem;
+    display: flex;
+}
+
 .head-line{
     margin-top: 1rem;
     font-size: 5.5rem;
@@ -84,6 +95,26 @@ body{
 
 #input-area{
     display: none;
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+input{
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+.search-btn{
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+
+.search-btn:hover{
+    background-color: black;
+    color: white;
 }
 
 .main-imgsize{
@@ -98,12 +129,31 @@ body{
     font-weight: 700;
 }
 
+.calendar-style{
+    display: none;
+}
 
 @media screen and (max-width: 60rem) {
+    h2{
+        font-weight: 900;
+        font-style: normal;
+        font-size: 1.3rem;
+    }
+    .row{
+        margin: 0rem 0.3rem 1rem 0.3rem;
+    }
+    .col-lg-4{
+        padding: 0px 0px;
+        text-align: center;
+    }
+    .col-lg-8{
+        padding: 0px 0px;
+    }
     .head-line{
-        border-bottom: 3px solid black;
-        margin-bottom: 1rem;
-        padding-bottom: 1rem;
+        border-bottom: none;
+        margin: 0rem 0rem 1rem 1.3rem;
+        padding-bottom: 0rem;
+        font-size: 2rem;
     }
     .hidden-btn{
         display: block;
@@ -112,6 +162,34 @@ body{
         display: none;
     }
     .news-view{
+        text-align: left;
+        border-bottom: 1px solid black;
+    }
+    .main-imgsize{
+        margin-bottom: 1rem;
+    }
+    .top-area{
+        justify-content: space-between;
+    }
+    #input-area{
+        display: flex;
+    }
+    input::placeholder{
         text-align: center;
+    }
+    .medi-hidden{
+        display: none;
+    }
+    .top-center{
+        width: 90vw;
+        display: flex;
+        justify-content: center;
+    }
+    .calendar-style{
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
     }
   }

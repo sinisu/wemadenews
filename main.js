@@ -1,5 +1,10 @@
 const API_KEY=`1ca59444f6184e01a70725c06a31ae22`
 let newsList=[];
+const menus=document.querySelectorAll(".menus button")
+menus.forEach(menu=>menu.addEventListener("click",(event)=>getNewsByCategory(event)))
+const sideMenus=document.querySelectorAll(".side-menus button")
+sideMenus.forEach(menu=>menu.addEventListener("click",(event)=>getNewsByCategory(event)))
+
 const getLatestNews = async ()=>{
     const url= new URL(`https://wemadenews.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}&pageSize=20`);
     // 과제 제출시 https://wemadenews.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}
@@ -11,6 +16,25 @@ const getLatestNews = async ()=>{
 };
 
 getLatestNews();
+
+const getNewsByCategory=async(event)=>{
+    const category=event.target.textContent.toLowerCase();
+    const sidecategory=event.target.textContent.toLowerCase();
+    const url = new URL(`https://wemadenews.netlify.app/top-headlines?country=kr&category=${category||sidecategory}&apiKey=${API_KEY}&pageSize=20`);
+    const response = await fetch(url)
+    const data = await response.json();
+    newsList = data.articles;
+    render();
+};
+
+const searchNews=async()=>{
+    const searchWord=document.getElementById("search-input").value;
+    const url = new URL(`https://wemadenews.netlify.app/top-headlines?country=kr&q=${searchWord}&apiKey=${API_KEY}&pageSize=20`);
+    const response = await fetch(url)
+    const data = await response.json();
+    newsList = data.articles;
+    render();
+}
 
 const openNav=()=> {
     document.getElementById("mySidenav").style.width = "18rem";
@@ -29,10 +53,15 @@ const openSearchBox=()=>{
     }
 }
 
+const imgError=(img)=>{
+    img.onerror=null;
+    img.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU";
+};
+
 const render=()=>{
     const newsHTML=newsList.map(news=>`<div class="row news-view">
     <div class="col-lg-4">
-        <img class="main-imgsize" src="${news.urlToImage||"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU"}">
+        <img class="main-imgsize" src="${news.urlToImage}" onerror="imgError(this)">
     </div>
     <div class="col-lg-8">
         <h2>${news.title}</h2>
@@ -48,3 +77,8 @@ const render=()=>{
 
     document.getElementById("news-article").innerHTML=newsHTML
 }
+
+
+    const calenderArea=document.getElementById("calendar-area")
+    const times=moment().format('LL');
+    calenderArea.innerHTML=`${times}`
