@@ -4,14 +4,22 @@ const menus=document.querySelectorAll(".menus button")
 menus.forEach(menu=>menu.addEventListener("click",(event)=>getNewsByCategory(event)))
 const sideMenus=document.querySelectorAll(".side-menus button")
 sideMenus.forEach(menu=>menu.addEventListener("click",(event)=>getNewsByCategory(event)))
+const userSearch=document.getElementById("search-input")
+userSearch.addEventListener("focus",()=>userSearch.value="")
+let url= new URL(`https://wemadenews.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}&pageSize=20`);
 
-const getLatestNews = async ()=>{
-    const url= new URL(`https://wemadenews.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}&pageSize=20`);
-    // 과제 제출시 https://wemadenews.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}
+
+const getWeNews = async ()=>{
     const response = await fetch(url) //fetch는 url로 정보를 요청하는것
     const data = await response.json();
     newsList = data.articles;
     render();
+}
+
+const getLatestNews = ()=>{
+    url= new URL(`https://wemadenews.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}&pageSize=20`);
+    // 과제 제출시 https://wemadenews.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}
+    getWeNews();
     console.log("dataja",newsList);
 };
 
@@ -20,20 +28,20 @@ getLatestNews();
 const getNewsByCategory=async(event)=>{
     const category=event.target.textContent.toLowerCase();
     const sidecategory=event.target.textContent.toLowerCase();
-    const url = new URL(`https://wemadenews.netlify.app/top-headlines?country=kr&category=${category||sidecategory}&apiKey=${API_KEY}&pageSize=20`);
-    const response = await fetch(url)
-    const data = await response.json();
-    newsList = data.articles;
-    render();
+    url = new URL(`https://wemadenews.netlify.app/top-headlines?country=kr&category=${category||sidecategory}&apiKey=${API_KEY}&pageSize=20`);
+    getWeNews();
 };
+
+const enterKey=()=>{
+    if(window.event.keyCode==13){
+        searchNews();
+    }
+}
 
 const searchNews=async()=>{
     const searchWord=document.getElementById("search-input").value;
-    const url = new URL(`https://wemadenews.netlify.app/top-headlines?country=kr&q=${searchWord}&apiKey=${API_KEY}&pageSize=20`);
-    const response = await fetch(url)
-    const data = await response.json();
-    newsList = data.articles;
-    render();
+    url = new URL(`https://wemadenews.netlify.app/top-headlines?country=kr&q=${searchWord}&apiKey=${API_KEY}&pageSize=20`);
+    getWeNews();
 }
 
 const openNav=()=> {
@@ -82,3 +90,6 @@ const render=()=>{
     const calenderArea=document.getElementById("calendar-area")
     const times=moment().format('LL');
     calenderArea.innerHTML=`${times}`
+
+    const calenderAreas=document.getElementById("calendar-areas")
+    calenderAreas.innerHTML=`${times}`

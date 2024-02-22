@@ -28,17 +28,18 @@
         <div class="m-2 top-center">
             <i class="fa-solid fa-magnifying-glass p-2 medi-hidden" onclick="openSearchBox()"></i>
             <div id="input-area">
-                <input type="text" id="search-input" placeholder="search">
-                <button class="search-btn" onclick="searchNews()">go</button>
-            </div>
+                <input type="text" id="search-input" placeholder="SEARCH" onkeyup="enterKey()">
+                <button class="search-btn" onclick="searchNews()">GO</button>
+            </div>   
         </div>
+        <div id="calendar-area" class="medi-hidden">시간</div>
     </div>
     
     
     <section class="container">
         <section>
             <div class="head-line">NEW NEW TIMES</div>
-            <div id="calendar-area" class="calendar-style">시간</div>
+            <div id="calendar-areas" class="calendar-style">시간</div>
             <div class="menus">               
                 <button>BUSINESS</button>
                 <button>ENTERTAINMENT</button>
