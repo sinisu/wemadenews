@@ -63,14 +63,18 @@ p{
 }
 
 .top-area{
+    background-color: white;
+    width: 100vw;
     padding-right: 1.625rem;
+    position: fixed;
+    top: 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .head-line{
-    margin-top: 1rem;
+    margin-top: 4rem;
     font-size: 5.5rem;
     text-align: center;
     margin-bottom: 1rem;
@@ -153,7 +157,7 @@ input{
     }
     .head-line{
         border-bottom: none;
-        margin: 0rem 0rem 1rem 0rem;
+        margin: 3rem 0rem 1rem 0rem;
         padding-bottom: 0rem;
         font-size: 2rem;
     }
