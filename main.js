@@ -33,8 +33,8 @@ const getNewsByCategory=async(event)=>{
 };
 
 const enterKey=()=>{
-    if(window.event.keyCode==13){
-        searchNews();
+    switch(event.key){
+        case "Enter": searchNews();
     }
 }
 
