@@ -10,17 +10,27 @@ let url= new URL(`https://wemadenews.netlify.app/top-headlines?country=kr&apiKey
 
 
 const getWeNews = async ()=>{
-    const response = await fetch(url) //fetch는 url로 정보를 요청하는것
-    const data = await response.json();
-    newsList = data.articles;
-    render();
-}
+    try{
+        const response = await fetch(url)
+        const data = await response.json();
+        if(response.status===200){
+            if(data.articles.length===0){
+                throw new Error("No result for this search");
+            }
+            newsList = data.articles;
+            render();
+        }else{
+            throw new Error(data.message)
+        }        
+    }catch(error){
+        errorRender(error.message);
+    }
+};
 
 const getLatestNews = ()=>{
     url= new URL(`https://wemadenews.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}&pageSize=20`);
     // 과제 제출시 https://wemadenews.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}
     getWeNews();
-    console.log("dataja",newsList);
 };
 
 getLatestNews();
@@ -85,6 +95,13 @@ const render=()=>{
 
     document.getElementById("news-article").innerHTML=newsHTML
 }
+
+const errorRender=(errorMessage)=>{
+    const errorHTML=`<div class="alert alert-danger" role="alert">
+    ${errorMessage}
+  </div>`;
+  document.getElementById("news-article").innerHTML=errorHTML
+};
 
 
     const calenderArea=document.getElementById("calendar-area")
